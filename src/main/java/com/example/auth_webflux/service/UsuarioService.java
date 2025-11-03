@@ -3,6 +3,7 @@ package com.example.auth_webflux.service;
 
 import com.example.auth_webflux.model.Usuario;
 import com.example.auth_webflux.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,11 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
 
-    @Autowired
-    private UsuarioRepository repository;
+
+    private final UsuarioRepository repository;
 
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 

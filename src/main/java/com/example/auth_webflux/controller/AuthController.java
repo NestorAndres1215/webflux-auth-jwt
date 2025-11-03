@@ -3,19 +3,19 @@ package com.example.auth_webflux.controller;
 import com.example.auth_webflux.model.Usuario;
 import com.example.auth_webflux.security.JwtUtil;
 import com.example.auth_webflux.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+    private final UsuarioService usuarioService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
     @PostMapping("/register")
     public Mono<Usuario> register(@RequestBody Usuario usuario) {

@@ -23,10 +23,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public Mono<String> login(@RequestBody Usuario usuario) {
-        return usuarioService.findByUsername(usuario.getUsername())
-                .filter(u -> usuarioService.checkPassword(usuario.getPassword(), u.getPassword()))
-                .map(u -> jwtUtil.generateToken(u.getUsername()))
-                .switchIfEmpty(Mono.error(new RuntimeException("Usuario o contraseña incorrecta")));
+    public Mono<Usuario> login(@RequestBody Usuario usuario) {
+        return usuarioService.findByUsername(usuario.getUsername());
     }
 }

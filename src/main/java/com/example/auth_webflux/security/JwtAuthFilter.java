@@ -19,8 +19,6 @@ public class JwtAuthFilter implements WebFilter {
 
 
     private  final JwtUtil jwtUtil;
-
-
     private final UsuarioService usuarioService;
 
     @Override
